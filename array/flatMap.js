@@ -33,9 +33,9 @@ const getClassroomGrades = (c) => c.students.map(getStudentGrade);
 const grades1 = school.map(getClassroomGrades);
 console.log(grades1);
 
-Array.prototype.flatMap = function (callback) {
+Array.prototype.flatMap2 = function (callback) {
 	return Array.prototype.concat.apply([], this.map(callback));
 };
 
-const grades2 = school.flatMap(getClassroomGrades);
+const grades2 = school.flatMap2(getClassroomGrades);
 console.log(grades2);
