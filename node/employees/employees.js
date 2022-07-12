@@ -12,7 +12,7 @@ const lowestWage = (employee, currentEmployee) => {
 axios.get(url).then((response) => {
 	const employees = response.data;
 
-	// Lowest paid chinese woman?
+	// Challenge - Lowest paid chinese woman?
 	const employee = employees
 		.filter(onlyChinese)
 		.filter(onlyWomen)
