@@ -1,0 +1,9 @@
+https://docs.npmjs.com/cli/v8/commands
+
+npm install - install packages in package.json "dependencies"
+npm start - starts with what is defined in package.json "start"
+npm run dev - same as start (run dev does not work)
+npm test - runs tests (in case there are any)
+nodemon keeps track of each change that is made to a code and executes it immediately
+custom script (named x, for example)
+npm run x
