@@ -1,6 +1,7 @@
 const gunList = require("./gunList.json");
+const maxMoney = 9000;
 
-function getAvailableGuns(gunList, maxPrice, description) {
+function getAvailableGuns(maxPrice, description) {
 	let availableGuns = gunList.filter((e) => e.price <= maxPrice);
 	if (description) {
 		availableGuns = availableGuns.filter((e) => e.description === description);
@@ -14,10 +15,16 @@ function getRandomAvailable(availableGuns) {
 	return availableGuns[randomIndex];
 }
 
-function getRandomGun(gunList = [], maxPrice = 9000, description = "") {
-	let available = getAvailableGuns(gunList, maxPrice, description);
+function getRandomGun(maxPrice = maxMoney, description = "") {
+	let available = getAvailableGuns(maxPrice, description);
 	let answer = getRandomAvailable(available);
 	return answer;
 }
 
-console.log(getRandomGun(gunList, 2000));
+function getRandomByClass(description = "") {
+	let answer = getRandomGun(maxMoney, description);
+	return answer;
+}
+
+console.log(getRandomGun());
+console.log(getRandomByClass("shotgun"));
