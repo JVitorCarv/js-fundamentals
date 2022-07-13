@@ -27,4 +27,4 @@ function getRandomByClass(description = "") {
 }
 
 console.log(getRandomGun());
-console.log(getRandomByClass("shotgun"));
+console.log(getRandomByClass("sniper"));
