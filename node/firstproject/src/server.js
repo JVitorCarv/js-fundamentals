@@ -2,9 +2,13 @@ const port = 3003;
 
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+const savedData = require("./savedData");
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/products", (req, res, next) => {
-	console.log("Middleware 1...");
+	console.log("Middleware 1 - Getting products...");
 	next();
 });
 
@@ -16,7 +20,33 @@ app.use((req, res, next) => {
 */
 
 app.get("/products", (req, res, next) => {
-	res.send({ name: "Notebook", price: 123.45 }); // Converts to JSON
+	res.send(savedData.getProducts()); // Converts to JSON
+});
+
+app.get("/products/:id", (req, res, next) => {
+	res.send(savedData.getProduct(req.params.id));
+});
+
+app.post("/products", (req, res, next) => {
+	const product = savedData.saveProduct({
+		name: req.body.name,
+		price: req.body.price
+	});
+	res.send(product);
+});
+
+app.put("/products/:id", (req, res, next) => {
+	const product = savedData.saveProduct({
+		id: req.params.id,
+		name: req.body.name,
+		price: req.body.price
+	});
+	res.send(product);
+});
+
+app.delete("/products/:id", (req, res, next) => {
+	const product = savedData.deleteProduct(req.params.id);
+	res.send(product);
 });
 
 app.listen(port, () => {
