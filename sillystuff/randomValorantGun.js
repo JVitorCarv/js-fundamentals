@@ -26,5 +26,5 @@ function getRandomByClass(description = "") {
 	return answer;
 }
 
-console.log(getRandomGun());
-console.log(getRandomByClass("sniper"));
+console.log(getRandomGun(2500));
+//console.log(getRandomByClass("sniper"));
