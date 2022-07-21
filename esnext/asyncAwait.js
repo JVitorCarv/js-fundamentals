@@ -21,10 +21,14 @@ const getClassroom = (letter) => {
 	});
 };
 
-Promise.all([getClassroom("A"), getClassroom("B"), getClassroom("C")])
-	.then((classrooms) => [].concat(...classrooms))
-	.then((students) => students.map((student) => student.nome))
-	.then((names) => console.log(names))
-	.catch((e) => console.log(e.message));
+// Made to simplify the use of promises
+let getClassrooms = async () => {
+	const ca = await getClassroom("A");
+	const cb = await getClassroom("B");
+	const cc = await getClassroom("C");
+	return [].concat(ca, cb, cc);
+}; // returns asyncFcuntion object
 
-getClassroom("D").catch((e) => console.log(e.message));
+getClassrooms()
+	.then((students) => students.map((s) => s.nome))
+	.then((names) => console.log(names));
